@@ -1,14 +1,11 @@
-import java.io.*;
-import java.net.*;
-import java.util.regex.*;
-import java.sql.*;
-import java.util.*;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.sql.*;
+import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class Crawler
@@ -23,7 +20,7 @@ public class Crawler
 
 	public void readProperties() throws IOException {
       		props = new Properties();
-      		FileInputStream in = new FileInputStream("database.properties");
+      		FileInputStream in = new FileInputStream("src/database.properties");
       		props.load(in);
       		in.close();
 	}

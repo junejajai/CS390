@@ -1,14 +1,32 @@
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.sql.*;
-import java.util.Properties;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.*;
 
 public class Crawler
 {
+
+
+    String initialurl = "http://purdue.edu";
+    Queue<String> travUrl = new LinkedList<String>();
+    Hashtable<String, Integer> visited = new Hashtable<String, Integer>();
+    //Hashtable<String, Integer> depth = new Hashtable<String, Integer>();
+    Queue<String> notvisited = new LinkedList<String>();
+    int maxdepth = 0;
+    int newdepth = 0;
+    int numvisited = 0;
+   // Stack<String> stack = new Stack<String>();
+    Hashtable<String, Integer> freq = new Hashtable<String, Integer>();
+    int counter = 0;
+
+
+
+
 	Connection connection;
 	int urlID;
 	public Properties props;
@@ -105,7 +123,7 @@ public class Crawler
 
 	}
 */
-
+/*
    	public void fetchURL(String urlScanned) {
 		try {
 			URL url = new URL(urlScanned);
@@ -149,17 +167,152 @@ public class Crawler
       		{
        			e.printStackTrace();
       		}
-	}
+	}*/
 
-   	public static void main(String[] args)
+
+
+
+//start bfs here
+
+
+
+Queue<String>descr = new LinkedList<String>();
+
+    public void crawl()throws IOException{
+        int currdepth = 0;
+        //depth.put(initialurl, 0);
+        notvisited.add(initialurl);
+        int n = 0;
+        while (n < 20) {
+            try {
+                System.out.println(n);
+                System.out.printf("Current link is %s \n", notvisited.element());
+                String oldUrl = notvisited.poll();
+                travUrl.add(oldUrl);
+                //Document doc = null;
+
+                // if (!visited.contains(oldUrl)) {
+                Document doc = Jsoup.connect(oldUrl).get();
+                //visited.put(oldUrl, 0);
+                //depth.put(oldUrl,0);
+
+                Elements links = doc.select("a[href]");
+
+                for (Element link : links) {
+                    String linkh = link.attr("abs:href");
+
+                    if (travUrl.contains(linkh) == true) { // if not
+                        // traversed then
+                        // added to
+                        // queue
+
+                        //counter++;
+                    } else {
+                        //System.out.println("already added this to list");
+                        //visited.put(linkh, visited.get(linkh) + 1);
+                        //System.out.println("Insetred and updated");
+                       // currdepth = depth.get(oldUrl) + 1;
+
+
+
+
+
+                        travUrl.add(linkh);
+
+
+
+
+                        // System.out.println("CurrDerpth" + currdepth);
+                       // if (notvisited.contains(linkh) == false)
+                           // depth.put(linkh, depth.get(oldUrl) + 1);
+                       // if (maxdepth <= currdepth) {
+                        //    maxdepth = currdepth;
+                        //}
+
+
+                        // visited.put(linkh, 1);
+                        //if (!linkh.contains(".pdf")
+                        //      && !linkh.contains(".ico")) { //add these regardless
+                        notvisited.add(linkh);
+
+                        System.out.println(linkh);
+
+                    }
+
+                }
+
+                int charcount = 0;
+                String restring = "";
+                String texta = doc.body().text();
+                String newtext = texta.toLowerCase();
+                String a[] = newtext.split("\\P{Alpha}+");
+
+                for(String x : a)
+                {
+                    if(charcount>=100)
+                    {
+                        break;
+                    }
+                    charcount+= x.length();
+                    restring = restring + x + " ";
+
+                }
+
+                descr.add(restring);
+                System.out.println(restring);
+                insertURLInDB(oldUrl);
+
+
+                // } else {
+                //    visited.put(oldUrl, visited.get(oldUrl) + 1);
+                //  counter++;
+
+                // }
+            } catch (Exception e) {
+                //n++;//added
+                continue;
+            }
+            n++;
+
+        }
+        //System.out.println(visited.toString());
+       // System.out.println(notvisited.size());
+       // System.out.println("Maxdepth is : " + maxdepth);
+
+
+        //System.out.println("Counter is : " + (counter));
+
+        //System.out.println(depth.toString());
+    }
+
+
+
+
+//end bfs here
+
+
+
+
+
+
+
+
+
+
+   	public static void main(String[] args)throws IOException
    	{
-		Crawler crawler = new Crawler();
+
+        Crawler crawler = new Crawler();
+
 
 		try {
 			crawler.readProperties();
 			String root = crawler.props.getProperty("crawler.root");
 			crawler.createDB();
-			crawler.fetchURL(root);
+            crawler.crawl();
+			//crawler.fetchURL(root);
+
+
 		}
 		catch( Exception e) {
          		e.printStackTrace();

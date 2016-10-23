@@ -62,12 +62,14 @@ public class Crawler
 		// Delete the table first if any
 		try {
 			stat.executeUpdate("DROP TABLE URLS");
+            stat.executeUpdate("DROP TABLE WORDTABLE");
 		}
 		catch (Exception e) {
 		}
 			
 		// Create the table
         	stat.executeUpdate("CREATE TABLE URLS (urlid INT, url VARCHAR(512), description VARCHAR(200))");
+            stat.executeUpdate("CREATE TABLE WORDTABLE (word VARCHAR(512), urlId INTEGER)");
 	}
 
 	public boolean urlInDB(String urlFound) throws SQLException, IOException {
@@ -82,13 +84,25 @@ public class Crawler
 		return false;
 	}
 
-	public void insertURLInDB( String url) throws SQLException, IOException {
+	public void insertURLInDB( String url, String descr) throws SQLException, IOException {
          	Statement stat = connection.createStatement();
-		String query = "INSERT INTO urls VALUES ('"+urlID+"','"+url+"','')";
-		//System.out.println("Executing "+query);
+		//String query = "INSERT INTO urls VALUES ('"+urlID+"','"+url+"','')";
+        String query = "INSERT INTO urls VALUES ('"+urlID+"','"+url+"','" +descr+"')";
+        //System.out.println("Executing "+query);
 		stat.executeUpdate( query );
 		urlID++;
 	}
+
+	public void insertWordInDB(String word)throws SQLException, IOException
+    {
+        Statement stat = connection.createStatement();
+        //String query = "INSERT INTO urls VALUES ('"+urlID+"','"+url+"','')";
+        String query = "INSERT INTO wordtable VALUES ('"+word+"','"+urlID+"')";
+        //System.out.println("Executing "+query);
+        stat.executeUpdate( query );
+    }
+
+
 
 /*
 	public String makeAbsoluteURL(String url, String parentURL) {
@@ -183,7 +197,7 @@ Queue<String>descr = new LinkedList<String>();
         //depth.put(initialurl, 0);
         notvisited.add(initialurl);
         int n = 0;
-        while (n < 20) {
+        while (n < 10000) {
             try {
                 System.out.println(n);
                 System.out.printf("Current link is %s \n", notvisited.element());
@@ -192,7 +206,7 @@ Queue<String>descr = new LinkedList<String>();
                 //Document doc = null;
 
                 // if (!visited.contains(oldUrl)) {
-                Document doc = Jsoup.connect(oldUrl).get();
+                Document doc = Jsoup.connect(oldUrl).timeout(5000).get();
                 //visited.put(oldUrl, 0);
                 //depth.put(oldUrl,0);
 
@@ -245,6 +259,7 @@ Queue<String>descr = new LinkedList<String>();
                 String restring = "";
                 String texta = doc.body().text();
                 String newtext = texta.toLowerCase();
+                //System.out.println(newtext);
                 String a[] = newtext.split("\\P{Alpha}+");
 
                 for(String x : a)
@@ -257,10 +272,20 @@ Queue<String>descr = new LinkedList<String>();
                     restring = restring + x + " ";
 
                 }
+                String r = "";
+                 a = newtext.split("\\P{Alpha}+");
+                for (String x: a)
+                {
+                    //r = r + a + " ";
+                    insertWordInDB(x);
+               }
 
-                descr.add(restring);
+
+                //descr.add(r);
+
                 System.out.println(restring);
-                insertURLInDB(oldUrl);
+                insertURLInDB(oldUrl,restring);
+
 
 
                 // } else {

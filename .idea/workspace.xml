@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/Crawler.java" line="284" />
+    <bookmark url="file://$PROJECT_DIR$/src/Crawler.java" line="217" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1bf002b-b773-4090-9490-7b33ed2d65ac" name="Default" comment="" />
@@ -27,8 +27,8 @@
       <file leaf-file-name="database.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/database.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+            <state relative-caret-position="170">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -37,8 +37,8 @@
       <file leaf-file-name="Crawler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Crawler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="100" column="14" selection-start-line="100" selection-start-column="14" selection-end-line="100" selection-end-column="14" />
+            <state relative-caret-position="-1185">
+              <caret line="145" column="4" selection-start-line="145" selection-start-column="4" selection-end-line="145" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -61,7 +61,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="612">
               <caret line="44" column="66" selection-start-line="42" selection-start-column="23" selection-end-line="44" selection-end-column="66" />
-              <folding />
+              <folding>
+                <element signature="e#0#13200#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#377#385#0" expanded="false" />
+                <element signature="e#447#464#0" expanded="false" />
+                <element signature="e#524#541#0" expanded="false" />
+                <element signature="e#594#602#0" expanded="false" />
+                <element signature="e#725#733#0" expanded="false" />
+                <element signature="e#792#809#0" expanded="false" />
+                <element signature="e#4356#4373#0" expanded="false" />
+                <element signature="e#5843#5859#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -91,8 +102,8 @@
         <option value="$PROJECT_DIR$/lab1-src/run.bat" />
         <option value="$PROJECT_DIR$/lab1-src/database.properties" />
         <option value="$PROJECT_DIR$/../CS473/WebCrawler/src/WebCrawl.java" />
-        <option value="$PROJECT_DIR$/src/database.properties" />
         <option value="$USER_HOME$/.IdeaIC2016.2/idea.exe.vmoptions" />
+        <option value="$PROJECT_DIR$/src/database.properties" />
         <option value="$PROJECT_DIR$/src/Crawler.java" />
       </list>
     </option>
@@ -136,8 +147,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -190,6 +199,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -547,8 +558,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -557,7 +568,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22838847" sideWeight="0.50417536" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22621565" sideWeight="0.49582464" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.56236786" sideWeight="0.49582464" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -620,6 +631,25 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../CS473/WebCrawler/src/WebCrawl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="44" column="66" selection-start-line="42" selection-start-column="23" selection-end-line="44" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#13200#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#377#385#0" expanded="false" />
+            <element signature="e#447#464#0" expanded="false" />
+            <element signature="e#524#541#0" expanded="false" />
+            <element signature="e#594#602#0" expanded="false" />
+            <element signature="e#725#733#0" expanded="false" />
+            <element signature="e#792#809#0" expanded="false" />
+            <element signature="e#4356#4373#0" expanded="false" />
+            <element signature="e#5843#5859#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/database.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -650,7 +680,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="44" column="66" selection-start-line="42" selection-start-column="23" selection-end-line="44" selection-end-column="66" />
-          <folding />
+          <folding>
+            <element signature="e#0#13200#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#377#385#0" expanded="false" />
+            <element signature="e#447#464#0" expanded="false" />
+            <element signature="e#524#541#0" expanded="false" />
+            <element signature="e#594#602#0" expanded="false" />
+            <element signature="e#725#733#0" expanded="false" />
+            <element signature="e#792#809#0" expanded="false" />
+            <element signature="e#4356#4373#0" expanded="false" />
+            <element signature="e#5843#5859#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -676,7 +717,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="44" column="66" selection-start-line="42" selection-start-column="23" selection-end-line="44" selection-end-column="66" />
-          <folding />
+          <folding>
+            <element signature="e#0#13200#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#377#385#0" expanded="false" />
+            <element signature="e#447#464#0" expanded="false" />
+            <element signature="e#524#541#0" expanded="false" />
+            <element signature="e#594#602#0" expanded="false" />
+            <element signature="e#725#733#0" expanded="false" />
+            <element signature="e#792#809#0" expanded="false" />
+            <element signature="e#4356#4373#0" expanded="false" />
+            <element signature="e#5843#5859#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -709,7 +761,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="44" column="66" selection-start-line="42" selection-start-column="23" selection-end-line="44" selection-end-column="66" />
-          <folding />
+          <folding>
+            <element signature="e#0#13200#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#377#385#0" expanded="false" />
+            <element signature="e#447#464#0" expanded="false" />
+            <element signature="e#524#541#0" expanded="false" />
+            <element signature="e#594#602#0" expanded="false" />
+            <element signature="e#725#733#0" expanded="false" />
+            <element signature="e#792#809#0" expanded="false" />
+            <element signature="e#4356#4373#0" expanded="false" />
+            <element signature="e#5843#5859#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -742,7 +805,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="44" column="66" selection-start-line="42" selection-start-column="23" selection-end-line="44" selection-end-column="66" />
-          <folding />
+          <folding>
+            <element signature="e#0#13200#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#377#385#0" expanded="false" />
+            <element signature="e#447#464#0" expanded="false" />
+            <element signature="e#524#541#0" expanded="false" />
+            <element signature="e#594#602#0" expanded="false" />
+            <element signature="e#725#733#0" expanded="false" />
+            <element signature="e#792#809#0" expanded="false" />
+            <element signature="e#4356#4373#0" expanded="false" />
+            <element signature="e#5843#5859#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -786,14 +860,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lab1-src/Crawler.java" />
-    <entry file="file://$PROJECT_DIR$/../CS473/WebCrawler/src/WebCrawl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="44" column="66" selection-start-line="42" selection-start-column="23" selection-end-line="44" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Crawler.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1216">
@@ -801,11 +867,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/database.properties">
+    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/ant.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../CS473/WebCrawler/src/WebCrawl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="44" column="66" selection-start-line="42" selection-start-column="23" selection-end-line="44" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#13200#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#377#385#0" expanded="false" />
+            <element signature="e#447#464#0" expanded="false" />
+            <element signature="e#524#541#0" expanded="false" />
+            <element signature="e#594#602#0" expanded="false" />
+            <element signature="e#725#733#0" expanded="false" />
+            <element signature="e#792#809#0" expanded="false" />
+            <element signature="e#4356#4373#0" expanded="false" />
+            <element signature="e#5843#5859#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -817,10 +910,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/database.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Crawler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="100" column="14" selection-start-line="100" selection-start-column="14" selection-end-line="100" selection-end-column="14" />
+        <state relative-caret-position="-1185">
+          <caret line="145" column="4" selection-start-line="145" selection-start-column="4" selection-end-line="145" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

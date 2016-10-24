@@ -4,15 +4,19 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.*;
-import java.util.*;
+import java.util.Hashtable;
+import java.util.LinkedList;
+import java.util.Properties;
+import java.util.Queue;
 
 public class Crawler
 {
 
 
-    String initialurl = "http://purdue.edu";
+    String initialurl;
     Queue<String> travUrl = new LinkedList<String>();
     Hashtable<String, Integer> visited = new Hashtable<String, Integer>();
     //Hashtable<String, Integer> depth = new Hashtable<String, Integer>();
@@ -23,7 +27,7 @@ public class Crawler
    // Stack<String> stack = new Stack<String>();
     Hashtable<String, Integer> freq = new Hashtable<String, Integer>();
     int counter = 0;
-
+    String current;
 
 
 
@@ -96,101 +100,51 @@ public class Crawler
 
 	public void insertWordInDB(String word)throws SQLException, IOException
     {
-        Statement stat = connection.createStatement();
-        //String query = "INSERT INTO urls VALUES ('"+urlID+"','"+url+"','')";
-        query = "INSERT INTO wordtable VALUES ('"+word+"','"+urlID+"')";
-        //System.out.println("Executing "+query);
-        stat.executeUpdate( query );
+        //try {
+            Statement stat = connection.createStatement();
+            //String query = "INSERT INTO urls VALUES ('"+urlID+"','"+url+"','')";
+            query = "INSERT INTO wordtable VALUES ('" + word + "','" + counter + "')";
+            //System.out.println("Executing "+query);
+            stat.executeUpdate(query);
+        //}
+        //catch (Exception e)
+        //{
+            //updatecurrUrl(current);
+            //String urlD = ""+urlID;
+          //  updatecurrUrlId(urlD);
+        //}
+    }
+
+    String newS;
+    public void updatecurrUrl(String currUrl) throws IOException {
+        FileOutputStream out = new FileOutputStream("src/database.properties");
+        newS = "";
+        for(int i = 0; i<currUrl.length();i++)
+        {
+            if(currUrl.charAt(i)==':')
+            {
+                newS+="\\";
+            }
+            newS+=currUrl.charAt(i);
+        }
+
+        props.setProperty("crawler.currurl",newS);
+        props.store(out, null);
+        out.close();
+    }
+
+    public void updatecurrUrlId(String urlsId) throws IOException {
+        FileOutputStream out = new FileOutputStream("src/database.properties");
+        props.setProperty("crawler.urlId",urlsId);
+        props.store(out, null);
+        out.close();
     }
 
 
-
-/*
-	public String makeAbsoluteURL(String url, String parentURL) {
-		if (url.indexOf(":")<0) {
-			// the protocol part is already there.
-			return url;
-		}
-
-		if (url.length > 0 && url.charAt(0) == '/') {
-			// It starts with '/'. Add only host part.
-			int posHost = url.indexOf("://");
-			if (posHost <0) {
-				return url;
-			}
-			int posAfterHist = url.indexOf("/", posHost+3);
-			if (posAfterHist < 0) {
-				posAfterHist = url.Length();
-			}
-			String hostPart = url.substring(0, posAfterHost);
-			return hostPart + "/" + url;
-		} 
-
-		// URL start with a char different than "/"
-		int pos = parentURL.lastIndexOf("/");
-		int posHost = parentURL.indexOf("://");
-		if (posHost <0) {
-			return url;
-		}
-		
-		
-		
-
-	}
-*/
-/*
-   	public void fetchURL(String urlScanned) {
-		try {
-			URL url = new URL(urlScanned);
-			System.out.println("urlscanned="+urlScanned+" url.path="+url.getPath());
- 
-    			// open reader for URL
-    			InputStreamReader in = 
-       				new InputStreamReader(url.openStream());
-
-    			// read contents into string builder
-    			StringBuilder input = new StringBuilder();
-    			int ch;
-			while ((ch = in.read()) != -1) {
-         			input.append((char) ch);
-			}
-
-     			// search for all occurrences of pattern
-    			String patternString =  "<a\\s+href\\s*=\\s*(\"[^\"]*\"|[^\\s>]*)\\s*>";
-    			Pattern pattern = 			
-	     			Pattern.compile(patternString, 
-	     			Pattern.CASE_INSENSITIVE);
-    			Matcher matcher = pattern.matcher(input);
-		
-			while (matcher.find()) {
-    				int start = matcher.start();
-    				int end = matcher.end();
-    				String match = input.substring(start, end);
-				String urlFound = matcher.group(1);
-				System.out.println(urlFound);
-
-				// Check if it is already in the database
-				if (!urlInDB(urlFound)) {
-					insertURLInDB(urlFound);
-				}				
-	
-    				//System.out.println(match);
- 			}
-
-		}
-      		catch (Exception e)
-      		{
-       			e.printStackTrace();
-      		}
-	}*/
-
-
-
-
 //start bfs here
-
-
-
+    String yolo = "";
+    
+    String nparse[];
 Queue<String>descr = new LinkedList<String>();
 
     public void crawl()throws IOException{
@@ -202,6 +156,7 @@ Queue<String>descr = new LinkedList<String>();
             try {
                 System.out.println(n);
                 System.out.printf("Current link is %s \n", notvisited.element());
+                current = notvisited.element();
                 String oldUrl = notvisited.poll();
                 travUrl.add(oldUrl);
                 //Document doc = null;
@@ -220,34 +175,12 @@ Queue<String>descr = new LinkedList<String>();
                         // traversed then
                         // added to
                         // queue
-
                         //counter++;
                     } else {
-                        //System.out.println("already added this to list");
-                        //visited.put(linkh, visited.get(linkh) + 1);
-                        //System.out.println("Insetred and updated");
-                       // currdepth = depth.get(oldUrl) + 1;
-
-
-
 
 
                         travUrl.add(linkh);
 
-
-
-
-                        // System.out.println("CurrDerpth" + currdepth);
-                       // if (notvisited.contains(linkh) == false)
-                           // depth.put(linkh, depth.get(oldUrl) + 1);
-                       // if (maxdepth <= currdepth) {
-                        //    maxdepth = currdepth;
-                        //}
-
-
-                        // visited.put(linkh, 1);
-                        //if (!linkh.contains(".pdf")
-                        //      && !linkh.contains(".ico")) { //add these regardless
                         notvisited.add(linkh);
 
                         System.out.println(linkh);
@@ -277,12 +210,44 @@ Queue<String>descr = new LinkedList<String>();
                  a = newtext.split("\\P{Alpha}+");
                 for (String x: a)
                 {
-                    //r = r + a + " ";
-                    insertWordInDB(x);
+                    r = r + a + " ";
+                 //   insertWordInDB(x);
                }
 
 
-                //descr.add(r);
+                descr.add(r);
+
+                if(descr.size() == 200)
+                {
+                    while(!descr.isEmpty())
+                    {
+                        try {
+                        yolo = descr.poll();
+                        nparse = yolo.split("\\P{Alpha}+");
+
+                        //for(parse:nparse)
+                        for(String parse : nparse)
+                        {
+                            insertWordInDB(parse);
+                        }
+                        counter++;
+                        }
+                        catch(Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+
+                    }
+                    //while(descr.size() != 0) {
+                      //  yolo = descr.poll();
+
+                       // for (parse : yolo) {
+                         //   insertWordInDB(parse);
+                        //}
+
+                        //counter++;
+                    //}
+                    }
 
                 System.out.println(restring);
                 insertURLInDB(oldUrl,restring);
@@ -333,8 +298,14 @@ Queue<String>descr = new LinkedList<String>();
 
 		try {
 			crawler.readProperties();
-            System.out.println(crawler.props.getProperty("urlId"));
-			String root = crawler.props.getProperty("crawler.root");
+            //System.out.println(crawler.props.getProperty("crawler.urlId"));
+
+            crawler.initialurl = crawler.props.getProperty("crawler.currurl");
+            crawler.urlID = Integer.parseInt(crawler.props.getProperty("crawler.urlId"));
+
+
+
+			//String root = crawler.props.getProperty("crawler.root");
 			crawler.createDB();
             crawler.crawl();
 			//crawler.fetchURL(root);
@@ -343,6 +314,7 @@ Queue<String>descr = new LinkedList<String>();
 		}
 		catch( Exception e) {
          		e.printStackTrace();
+            System.out.println("fucked up here");
 		}
     	}
 }

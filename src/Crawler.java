@@ -40,6 +40,7 @@ public class Crawler
       		FileInputStream in = new FileInputStream("src/database.properties");
       		props.load(in);
       		in.close();
+
 	}
 
 	public void openConnection() throws SQLException, IOException
@@ -83,11 +84,11 @@ public class Crawler
 	       // System.out.println("URL "+urlFound+" not yet in DB");
 		return false;
 	}
-
+    String query;
 	public void insertURLInDB( String url, String descr) throws SQLException, IOException {
          	Statement stat = connection.createStatement();
 		//String query = "INSERT INTO urls VALUES ('"+urlID+"','"+url+"','')";
-        String query = "INSERT INTO urls VALUES ('"+urlID+"','"+url+"','" +descr+"')";
+         query = "INSERT INTO urls VALUES ('"+urlID+"','"+url+"','" +descr+"')";
         //System.out.println("Executing "+query);
 		stat.executeUpdate( query );
 		urlID++;
@@ -97,7 +98,7 @@ public class Crawler
     {
         Statement stat = connection.createStatement();
         //String query = "INSERT INTO urls VALUES ('"+urlID+"','"+url+"','')";
-        String query = "INSERT INTO wordtable VALUES ('"+word+"','"+urlID+"')";
+        query = "INSERT INTO wordtable VALUES ('"+word+"','"+urlID+"')";
         //System.out.println("Executing "+query);
         stat.executeUpdate( query );
     }
@@ -332,6 +333,7 @@ Queue<String>descr = new LinkedList<String>();
 
 		try {
 			crawler.readProperties();
+            System.out.println(crawler.props.getProperty("urlId"));
 			String root = crawler.props.getProperty("crawler.root");
 			crawler.createDB();
             crawler.crawl();
